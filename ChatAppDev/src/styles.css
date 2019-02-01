@@ -1,0 +1,108 @@
+/* You can add global styles to this file, and also import other style files */
+
+@import url('https://fonts.googleapis.com/css?family=Raleway:300,700');
+@import "~@angular/material/prebuilt-themes/pink-bluegrey.css";
+
+body {
+    background:#2E9CE6;
+    /* padding: 1em; */
+    font-family: 'Raleway', 'Arial';
+    color:#fff;
+}
+ul {
+    list-style-type:none;
+    margin:0 0 2em 0;
+    padding:0;
+}
+ul li {
+    display:inline;
+    margin-right: 30px;
+}
+ul li a {
+    font-size: 1.5em;
+}
+a {
+    color:#fff;
+    text-decoration:none;
+}
+
+
+
+.container {
+    display: grid;
+    grid-template-columns: 50% auto;
+}
+.col {
+    /* padding: 1.5em 2em; */
+    padding: 1.25em 1em;
+}
+.color-dark {
+    background: #2885C4;
+}
+.color-light {
+    background: #57B3F1;
+}
+
+input.txt {
+    border: 0;
+    padding: .75em;
+    width: 250px;
+    /* width: 50%; */
+    /* height: 50%; */
+    /* margin-bottom: 2em; */
+}
+/* input.btn { */
+.btn {
+    border: 0;
+    display:block;
+    padding:.8em 3em;
+    height: 50px;
+    width: 125px;
+    background:#A5F883;
+    color:#2885C4;
+    /* margin-bottom:.25em; */
+    /* margin-top:1em; */
+    cursor:pointer;
+	font-size: 1em;
+    font-family: 'Raleway', 'Arial';
+	font-weight:bold;
+}
+.life-container {
+    background:#3FA0E1;
+    padding:.5em;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+.entries {
+    margin-bottom: 1.5em;
+}
+
+.button-div {
+    padding: 2.5em 0;
+}
+
+.top-color-strip {
+    padding: .5em 2em;
+    min-height: 30px;
+}
+
+.bottom-color-strip {
+    padding: 1em 2em;
+    min-height: 35px;
+}
+
+.example-container {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: #eee;
+}
+
+@media only screen and (max-width: 650px) {
+    input.txt {
+        width: 125px;
+    }
+}

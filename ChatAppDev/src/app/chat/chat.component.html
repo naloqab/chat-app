@@ -1,0 +1,55 @@
+<div class="page-container" [class.is-mobile]="mobileQuery.matches">
+  <mat-toolbar color="primary" class="toolbar">
+    <button mat-icon-button (click)="snav.toggle()"><mat-icon>menu</mat-icon></button>
+    <h1 *ngIf="friendUserInfo" class="toolbar-text">{{ friendUserInfo.first_name }}</h1>
+    <span class="toolbar-spacer"></span>
+    <i id="userIcon" [matMenuTriggerFor]="userOptionsMenu" class="material-icons">account_circle</i>
+    <!-- <button mat-button [matMenuTriggerFor]="menu">Menu</button> -->
+    <mat-menu #userOptionsMenu="matMenu">
+      <button (click)="logout()" class="userMenuOptions" mat-menu-item>Logout</button>
+    </mat-menu>
+  </mat-toolbar>
+
+  <mat-sidenav-container
+    [style.marginTop.px]="mobileQuery.matches ? 56 : 0">
+    <mat-sidenav #snav [mode]="mobileQuery.matches ? 'over' : 'side'"
+      [fixedInViewport]="mobileQuery.matches" fixedTopGap="56">
+    
+      <mat-nav-list>
+
+        <form class="search-box">
+          <input autocomplete="off" type="text" class="search-input" name="item" (change)="searchFriend()" [(ngModel)]="friendSearched" placeholder="Search friends by username">
+          <!-- <button style="display: none;" type="submit" (click)="searchFriend()" >Search</button> -->
+        </form>
+
+        <!-- <mat-form-field class="search-box">
+          <input matInput class="search-input" [(ngModel)]="userMessage" placeholder="Search Friends">
+        </mat-form-field> -->
+        
+        <div class="friendsList">
+          <a mat-list-item *ngFor="let friend of friends" (click)="selectFriend(friend.username)">
+            <p class="friendsList-text">{{ friend.first_name }}</p>
+          </a>
+        </div>
+      </mat-nav-list>
+
+    </mat-sidenav>
+
+    <mat-sidenav-content>
+      <div *ngIf="!chat_id">
+        <br><br><br>
+        <p id="noFriends">You have not added any friends yet. Click on the menu button on the left to add friends.</p>
+      </div>
+      <div class="messages-container" #scrollMe [scrollTop]="scrollMe.scrollHeight">
+        <div *ngFor="let messageObject of messageObjects" class="message" [ngClass]="{'user-message': messageObject.username == friendUserInfo.username}">
+          <p class="message-text" [matTooltip]="messageObject.time | date:'short'" [ngClass]="{'user-message-text': messageObject.username == friendUserInfo.username}">{{ messageObject.content }}</p>
+        </div>
+      </div>
+      <form class="text-box">
+        <input autofocus="autofocus" autocomplete="off" type="text" class="sendMessage-textbox" name="item" [(ngModel)]="messageContent" placeholder="Send a message">
+        <button mat-button mat-raised-button type="submit" class="btn sendMessage-button" type="submit" (click)="sendMessage()" [disabled]="messageContent==''">Send</button>
+      </form>
+    </mat-sidenav-content>
+
+  </mat-sidenav-container>
+</div>

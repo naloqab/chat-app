@@ -1,0 +1,217 @@
+.page-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.is-mobile .toolbar {
+  position: fixed;
+  z-index: 2;
+}
+
+mat-toolbar {
+	background: #3f51b5 !important;
+}
+
+.is-mobile sidenav-container {
+	flex: 1 0 auto;
+  }
+
+.toolbar-spacer {
+  flex: 1 1 auto;
+}
+
+#userIcon {
+	padding: 0 15px;
+	font-size: 35px;
+	cursor: pointer;
+}
+
+.userMenuOptions {
+	text-align: center;
+	font-size: 14px;
+	/* font-weight: bold; */
+	/* height: 30px;
+	width: 40px; */
+}
+
+.toolbar-text {
+  margin-left: 50px;
+  font-family: 'Raleway', 'Arial';
+}
+
+mat-sidenav-container {
+	/* display: flex; */
+  flex: 1;
+  font-family: 'Raleway', 'Arial';
+  background-color: #2E9CE6;
+}
+
+/* mat-sidenav-container .is-mobile {
+  flex: 1 0 auto;
+} */
+
+mat-sidenav {
+	background-color: #3f51b5;
+}
+
+.friendsList {
+	width: 200px;
+	text-align: center;
+}
+
+mat-list-item {
+	text-align: center;
+}
+
+.friendsList-text {
+	color: white;
+	text-align: center;
+	font-family: 'Raleway', 'Arial';
+}
+
+mat-sidenav-content {
+	display: flex;
+	flex-direction: column;
+	/* justify-content: space-between; */
+	height: 100%;
+	width: 100%;
+}
+
+#noFriends {
+	font-size: 20px;
+	text-align: center;
+	/* font-weight: bold; */
+}
+
+.messages-container {
+	/* max-height: 86%; */
+	/* height: 90%; */
+	/* min-height: 90%; */
+	/* width: 100%; */
+	flex: .9;
+	padding: 1em;
+	overflow: auto;
+}
+
+.message {
+	/* height: 2em; */
+	/* background: #57B3F1; */
+	background: rgb(165, 248, 131);
+	max-width: 20em;
+	word-wrap: break-word;
+	padding: .25em 1.5em;
+	border-radius: 20px;
+	float: left;
+	clear: both;
+	margin-bottom: .5em;
+}
+
+.user-message {
+	/* background: #2885C4; */
+	/* background: #3457D5; */
+	background: #3f51b5;
+	/* justify-content: flex-end; */
+	float: right;
+}
+
+.message-text {
+	color: rgb(40, 133, 196);
+	font-size: 16px;
+	text-align: left;
+}
+
+.user-message-text {
+	color: white;
+}
+
+.message-container {
+	float: left;
+}
+
+.user-message-container {
+	float: right;
+}
+
+.text-box {
+	display: flex;
+	width: 100%;
+	flex: .1;
+	overflow: hidden;
+}
+
+.sendMessage-textbox {
+	/* overflow: hidden;
+	position: fixed;
+	bottom: 0;
+	width: 90%;
+	min-height: 70px; */
+	flex: .9;
+	/* width: 100%; */
+	font-size: 16px;
+	padding: 0 1em;
+	font-family: 'Raleway', 'Arial';
+}
+
+.sendMessage-button {
+	/* overflow: hidden;
+	position: fixed;
+	bottom: 0;
+	right: 0;
+	width: 6.8%;
+	min-height: 73.5px; */
+	/* width: 100%; */
+	height: 100%;
+	flex: .1;
+	font-size: 16px;
+	padding: 0 1.5em;
+}
+
+/* .footer {
+	overflow: hidden;
+	position: relative;
+} */
+
+.search-input {
+	width: 200px;
+	min-height: 30px;
+	padding: .5em;
+	font-family: 'Raleway', 'Arial';
+}
+
+
+
+/* width */
+::-webkit-scrollbar {
+	width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+	background: #f1f1f1; 
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+	background: #2885C4;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+	background: #57B3F1;
+}
+
+@media screen and (max-height: 500px) {
+	.text-box {
+		flex: .2;
+	}
+
+	.messages-container {
+		flex: .8;
+	}
+}

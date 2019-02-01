@@ -1,0 +1,47 @@
+<!-- <div style="text-align:center">
+  <h2>Welcome to Naser's {{ title }}!</h2>
+</div>
+<br> -->
+<div class="container color-light top-color-strip">
+    <h3>Please login below</h3>
+</div>
+<div class="container color-dark">
+  <div class="col entries">
+    <form (ngSubmit)="onLogin()" [formGroup]="userData">
+      <mat-form-field>
+        <!-- <h4>Username:</h4> -->
+        <input matInput placeholder="Username" autofocus="autofocus" autocomplete="off" formControlName="username">
+        <mat-error *ngIf="userData.get('username').hasError('required')">Username is <strong>required</strong></mat-error>
+      </mat-form-field>
+      <br>
+      <br>
+      <mat-form-field>
+        <!-- <h4>Password:</h4> -->
+        <input matInput placeholder="Password" autocomplete="off" type="password" formControlName="password">
+        <mat-error *ngIf="userData.get('password').hasError('required')">Password is <strong>required</strong></mat-error>
+      </mat-form-field>
+      <!-- <button style="display: none;" type="submit" (click)="login()" >Login</button> -->
+      <!-- <br>
+      <br> -->
+      <button style="display: none;" mat-button mat-raised-button type="submit" class="btn" [disabled]="userData.invalid || initService.loading">Login</button>
+    </form>
+  </div>
+  <div class="col">
+    <h4>Haven't registered yet?</h4>
+    <button mat-button type="submit" class="btn" routerLink="../register">Register</button>
+  </div>
+</div>
+<div class="container color-light bottom-color-strip">
+  <div>
+    <!-- <form> -->
+      <button mat-button mat-raised-button type="submit" class="btn" (click)="onLogin()" [disabled]="userData.invalid || initService.loading">Login</button>
+        <!-- <input type="submit" class="btn" value="Login" (click)="login()"> -->
+        <!-- <button mat-button type="submit" class="btn" (click)="login()">Login</button> -->
+    <!-- </form> -->
+  </div>
+</div>
+
+<!-- <div ng-controller="AppCtrl" class="md-padding dialogdemoBasicUsage" id="popupContainer" ng-cloak="" ng-app="ChatApp"></div>
+<md-button class="md-primary md-raised" ng-click="showAlert($event)"   >
+    Alert Dialog
+</md-button> -->
