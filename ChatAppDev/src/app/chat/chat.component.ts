@@ -14,6 +14,8 @@ import { environment } from '../../environments/environment.prod';
 
 import * as $ from 'jquery';
 
+declare var Notification;
+
 @Component({
   selector: 'app-chat',
   templateUrl: './chat.component.html',
@@ -117,7 +119,7 @@ export class ChatComponent implements OnInit {
       },
       error => {
         console.log(error);
-				this.router.navigate(['chat/login']);
+				// this.router.navigate(['chat/login']);
       }
     );
   }
@@ -133,7 +135,7 @@ export class ChatComponent implements OnInit {
 			if (this.messageObjects != []) {
 				if (this.previousMessageObjectTime != this.messageObjects[this.messageObjects.length-1].time) {
 					if (this.messageObjects[this.messageObjects.length-1].username != userAccount.username) {
-						if ('Notification' in window && (Notification as any).permission == 'granted') {
+						if ('Notification' in window && Notification.permission == 'granted') {
 							if (document.visibilityState != 'hidden') {
 								this.playAudio("incoming");
 							}
@@ -200,7 +202,7 @@ export class ChatComponent implements OnInit {
       },
       error => {
         console.log(error);
-				this.router.navigate(['chat/login']);
+				// this.router.navigate(['chat/login']);
       }
     );
 	}
@@ -235,13 +237,13 @@ export class ChatComponent implements OnInit {
 		this.friendSearched = "";
 	}
 	getNotificationPermission(){
-		if ('Notification' in window && (Notification as any).permission != 'granted') {
-			(Notification as any).requestPermission();
+		if ('Notification' in window && Notification.permission != 'granted') {
+			Notification.requestPermission();
 		}
 	}
 
 	sendNewNotification() {
-		if ((Notification as any).permission == 'granted' && document.visibilityState == 'hidden') {
+		if (Notification.permission == 'granted' && document.visibilityState == 'hidden') {
 			const notification = new Notification('You have a new message from ' + this.friendUserInfo.first_name + '!');
 		}
 	}

@@ -67,7 +67,8 @@ class MessageViewSet(viewsets.ModelViewSet):
 
     @list_route(methods=['get'])
     def chatMessages(self, request):
-        try:
+        # try:
+        if True:
             user_id = request.GET['user_id']
             chat_id = request.GET['chat_id']
 
@@ -92,8 +93,8 @@ class MessageViewSet(viewsets.ModelViewSet):
 
             return Response({'friendUserInfo':friendUserInfo, 'messageObjects':messageObjects}, status = status.HTTP_200_OK)
             
-        except Exception as e:
-            return Response({'message':str(e)}, status = status.HTTP_400_BAD_REQUEST)
+        # except Exception as e:
+        #     return Response({'message':str(e)}, status = status.HTTP_400_BAD_REQUEST)
             
     @list_route(methods=['post'])
     def sendMessage(self, request):

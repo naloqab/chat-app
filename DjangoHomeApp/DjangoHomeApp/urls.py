@@ -9,7 +9,9 @@ from django.conf.urls.static import static
 
 from rest_framework.authtoken.views import ObtainAuthToken
 
-from django.views.generic import TemplateView
+from django.views.generic import TemplateView, RedirectView
+
+
 
 router = routers.DefaultRouter()
 
@@ -19,6 +21,7 @@ router.register(r'chats', ChatApp.views.ChatViewSet)
 
 urlpatterns = [
     path('admin', admin.site.urls),
+    path('', RedirectView.as_view(url='chat')),
     path('chat', TemplateView.as_view(template_name="index.html")),
     path('chat/login', TemplateView.as_view(template_name="index.html")),
     path('chat/register', TemplateView.as_view(template_name="index.html")),
