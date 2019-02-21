@@ -115,6 +115,7 @@ export class ChatComponent implements OnInit {
       response => {
 				this.friendUserInfo = response.friendUserInfo;
 				this.messageObjects = response.messageObjects;
+				this.linkifyURLs();
 				this.newMessage();
       },
       error => {
@@ -122,7 +123,25 @@ export class ChatComponent implements OnInit {
 				// this.router.navigate(['chat/login']);
       }
     );
-  }
+	}
+	
+	linkifyURLs() {
+		for (let messageObject of this.messageObjects) {
+			const patternArray = ["www.", ".com", "://"];
+			for (let pattern of patternArray) {
+				if (messageObject.content.includes(pattern)) {
+					const messageObjectContentArray = messageObject.content.split(" ");
+					messageObjectContentArray.forEach((item, index) => {
+						if (item.includes(pattern)) {
+							messageObjectContentArray[index] = "<a target='_blank' href='//" + item + "'>" + item + "</a>";
+						}
+					});
+					messageObject.content = messageObjectContentArray.join(" ");
+					break;
+				}
+			}
+		}
+	}
 
 	pageLoadTime: Date = new Date();
 	currentTime: Date = this.pageLoadTime;

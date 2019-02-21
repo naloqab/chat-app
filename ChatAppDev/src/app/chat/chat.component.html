@@ -41,8 +41,8 @@
         <p id="noFriends">You have not added any friends yet. Click on the menu button on the left to add friends.</p>
       </div>
       <div class="messages-container" #scrollMe [scrollTop]="scrollMe.scrollHeight">
-        <div *ngFor="let messageObject of messageObjects" class="message" [ngClass]="{'user-message': messageObject.username == friendUserInfo.username}">
-          <p class="message-text" [matTooltip]="messageObject.time | date:'short'" [ngClass]="{'user-message-text': messageObject.username == friendUserInfo.username}">{{ messageObject.content }}</p>
+        <div *ngFor="let messageObject of messageObjects" class="message" [ngClass]="{'friend-message': messageObject.username == friendUserInfo.username}">
+          <p class="message-text" [matTooltip]="messageObject.time | date:'medium'" [ngClass]="{'friend-message-text': messageObject.username == friendUserInfo.username}" [innerHtml]="messageObject.content"></p>
         </div>
       </div>
       <form class="text-box">

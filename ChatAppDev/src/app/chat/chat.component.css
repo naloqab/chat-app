@@ -112,7 +112,7 @@ mat-sidenav-content {
 	margin-bottom: .5em;
 }
 
-.user-message {
+.friend-message {
 	/* background: #2885C4; */
 	/* background: #3457D5; */
 	background: #3f51b5;
@@ -126,15 +126,19 @@ mat-sidenav-content {
 	text-align: left;
 }
 
-.user-message-text {
+.friend-message-text {
 	color: white;
+}
+
+a {
+	color: yellow !important;
 }
 
 .message-container {
 	float: left;
 }
 
-.user-message-container {
+.friend-message-container {
 	float: right;
 }
 
