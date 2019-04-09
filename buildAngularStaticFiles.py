@@ -39,14 +39,6 @@ htmlTemplateNew.close()
 os.remove(f"{htmlTemplatePath}/index.html")
 os.rename(f"{htmlTemplatePath}/index.html.temp", f"{htmlTemplatePath}/index.html")
 
-# if os.path.exists(f"{staticFilesPath}/lastBuild"):
-#     for file in os.listdir(f"{staticFilesPath}/lastBuild"):
-#         os.remove(file)
-# else:
-#     os.makedirs(f"{staticFilesPath}/lastBuild")
-
-# os.chdir(staticFilesPath)
-
 for file in os.listdir(staticFilesPath):
     try:
         os.remove(f"{staticFilesPath}/{file}")

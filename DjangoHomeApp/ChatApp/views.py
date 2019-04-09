@@ -2,21 +2,15 @@ from django.contrib.auth.models import User
 from rest_framework import viewsets, status
 from ChatApp.models import Message, Chat
 from ChatApp.serializers import MessageSerializer, ChatSerializer, UserSerializer
-
 from rest_framework.authentication import TokenAuthentication, SessionAuthentication
 from rest_framework.permissions import IsAuthenticated
-
 from rest_framework.decorators import list_route
-
 from rest_framework.authtoken.models import Token
 from rest_framework.response import Response
 
 class UserViewSet(viewsets.ModelViewSet):
     queryset = User.objects.all().order_by('-date_joined')
     serializer_class = UserSerializer
-
-    # authentication_classes = (TokenAuthentication, SessionAuthentication)
-    # permission_classes = (IsAuthenticated,)
 
     @list_route(methods=['get'])
     def loggedinuser(self, request):
@@ -46,7 +40,7 @@ class UserViewSet(viewsets.ModelViewSet):
                 for participants_id in participants_ids:
                     if user_id != participants_id:
                         friend_user_id = int(participants_id)
-                # friend_user_id = int(chat['participants'].replace(",", "").replace(str(user_id), ""))
+                        
                 content = User.objects.get(id=friend_user_id)
                 serializer = UserSerializer(content, many=False)
                 friend = serializer.data
@@ -92,9 +86,6 @@ class MessageViewSet(viewsets.ModelViewSet):
                 messageObject['username'] = User.objects.get(id=messageObject['user_id']).username
 
             return Response({'friendUserInfo':friendUserInfo, 'messageObjects':messageObjects}, status = status.HTTP_200_OK)
-            
-        # except Exception as e:
-        #     return Response({'message':str(e)}, status = status.HTTP_400_BAD_REQUEST)
             
     @list_route(methods=['post'])
     def sendMessage(self, request):

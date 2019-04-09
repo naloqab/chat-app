@@ -3,15 +3,10 @@ from django.urls import path
 from django.conf.urls import url, include
 from rest_framework import routers
 import ChatApp.views
-
 from django.conf import settings
 from django.conf.urls.static import static
-
 from rest_framework.authtoken.views import ObtainAuthToken
-
 from django.views.generic import TemplateView, RedirectView
-
-
 
 router = routers.DefaultRouter()
 
